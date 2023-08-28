@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="Resources/Images/map_library_icon_158312.png">
+</head>
+<body>
+    <header class="header">
+        <h1>Library</h1>
+        <button id="addBookBtn">+ New Book</button>
+    </header>
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-header">Title: Coding in C!</div>
+            <div class="card-body">
+                <h4>Author: Joe Mama</h4>
+                <h4>Pages: 69</h4>
+                <h4>Read: Yes</h4>
+            </div>
+            <div class="card-footer">
+                <button class='card-btn btn-read'>Read</button>
+                <button class='card-btn btn-delete'>Delete</button>
+            </div>
+        </div>
+    </div>
+    <div id="addBook">
+        <form id="addBookForm">
+            <h2>Add new book</h2>
+            <input type="text" class="input" id="title" required maxlength="20" placeholder="Title">
+            <input type="text" class="input" id="author" required maxlength="20" placeholder="Author">
+            <input type="number" class="input" id="pages" required max="10000" placeholder="Pages">
+            <div class="read">
+                <label for="read">Read?</label>
+                <input type="checkbox" class="checkbox" id="read">
+            </div>
+            <button class="sumbit-btn">Sumbit</button>
+        </form>
+    </div>
+    <div class="overlay"></div>
+    <script src="app.js"></script>
+</body>
+</html>
