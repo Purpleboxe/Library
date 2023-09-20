@@ -1,6 +1,6 @@
 # Library
 
-A library app for the Odin Project!
+A library app for The Odin Project!
 
 Take a look at it here! https://purpleboxe.github.io/Library/
 
