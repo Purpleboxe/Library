@@ -12,6 +12,24 @@ const addBookBtn = document.getElementById('addBookBtn');
 const addBook = document.getElementById('addBook');
 const overlay = document.querySelector('.overlay');
 const cardGrid = document.querySelector('.card-grid');
+let myLibrary = [];
+
+function saveBooks () {
+    localStorage.setItem('books', JSON.stringify(myLibrary));
+}
+
+function restoreBooks (myLibrary) {
+    const books = JSON.parse(localStorage.getItem('books'));
+    if (books) {
+        books.map((book) => {
+            myLibrary.push(book);
+        });
+    } {
+        myLibrary = [];
+    }
+
+    renderLibrary();
+}
 
 const openAddBookForm = () => {
     addBook.classList.add('active');
@@ -27,11 +45,10 @@ const closeAddBookForm = () => {
 addBookBtn.onclick = openAddBookForm;
 overlay.onclick = closeAddBookForm;
 
-let myLibrary = [];
-
 function addBookToLibrary(book) {
     myLibrary.push(book);
     renderLibrary();
+    saveBooks();
 }
 
 addBookForm.addEventListener("submit", (e) => {
@@ -73,10 +90,13 @@ function createCard(book) {
 
     readBtn.classList.add('card-btn', 'btn-read');
     cardFooter.appendChild(readBtn);
-    if (book.read == true) {
+    if (book.read === true) {
         readBtn.innerText = 'Read';
+        readBtn.classList.add('read');
+
     } else {
         readBtn.innerText = 'Not Read';
+        readBtn.classList.remove('read');
     }
     readBtn.addEventListener('click', () => {
         book.read = !book.read;
@@ -89,10 +109,11 @@ function createCard(book) {
     deleteBtn.addEventListener('click', () => {
         myLibrary.splice(myLibrary.indexOf(book), 1);
         renderLibrary();
+        saveBooks();
     })
 }
 
-function renderLibrary() {
+function renderLibrary () {
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => cardGrid.removeChild(card));
 
@@ -101,4 +122,4 @@ function renderLibrary() {
     }
 }
 
-renderLibrary();
+restoreBooks(myLibrary);
