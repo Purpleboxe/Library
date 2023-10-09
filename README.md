@@ -23,5 +23,5 @@ Building it from scratch seemed scary at first but as I went deeper into buildin
 
 ## Conclusion
 
-Even though this library app took me a while to make I'm quite satisfied with the results.
-This project was a pretty easy and fun one to make!
+Even though this library app took me a while to make I'm quite satisfied with the final product.
+This project was a a little challenging but a fun one to make!
