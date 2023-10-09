@@ -18,9 +18,18 @@
     <div id="addBook">
         <form id="addBookForm">
             <h2>Add new book</h2>
-            <input type="text" class="input" id="title" required maxlength="20" placeholder="Title">
-            <input type="text" class="input" id="author" required maxlength="20" placeholder="Author">
-            <input type="number" class="input" id="pages" required max="10000" placeholder="Pages">
+            <div class="input-control">
+                <input type="text" class="input" id="title" maxlength="20" placeholder="Title">
+                <div class="error-text">Title can not be empty!</div>
+            </div>
+            <div class="input-control">
+                <input type="text" class="input" id="author" maxlength="20" placeholder="Author">
+                <div class="error-text">Author can not be empty!</div>
+            </div>
+            <div class="input-control">
+                <input type="number" class="input" id="pages" max="10000" placeholder="Pages">
+                <div class="error-text">Pages must be specified!</div>
+            </div>
             <div class="read-check">
                 <label for="read">Read?</label>
                 <input type="checkbox" class="checkbox" id="read">

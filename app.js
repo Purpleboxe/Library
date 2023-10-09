@@ -54,19 +54,72 @@ function addBookToLibrary(book) {
 addBookForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const title = e.target['title'].value;
-    const author = e.target['author'].value;
-    const pages = e.target['pages'].value;
-    const read = e.target['read'].checked;
-
-    let newBook = new Book(title, author, pages, read);
-
-    addBookToLibrary(newBook);
-
-    closeAddBookForm();
+    validateForm(e);
 })
 
-function createCard(book) {
+function validateForm (e) {
+    let allow = false;
+    const title = e.target['title'];
+    const author = e.target['author'];
+    const pages = e.target['pages'];
+    const read = e.target['read'].checked;
+
+    if (title.value.trim() === '') {
+        setError(title);
+        allow = false;
+    } else {
+        setSuccess(title);
+        allow = true;
+    }
+
+    if (author.value.trim() === '') {
+        setError(author);
+        allow = false;
+    } else {
+        setSuccess(author);
+        allow = true;
+    }
+
+    if (pages.value === '') {
+        setError(pages);
+        allow = false;
+    } else {
+        setSuccess(pages);
+        allow = true;
+    }
+
+    if (allow == true) {
+        let newBook = new Book(title.value, author.value, pages.value, read);
+
+        addBookToLibrary(newBook);
+        
+        title.classList.remove('success');
+        author.classList.remove('success');
+        pages.classList.remove('success');
+
+        closeAddBookForm();
+    }
+}
+
+const setError = (element) => {
+    const inputControl = element.parentElement;
+    const errorText = inputControl.querySelector('.error-text');
+
+    element.classList.add('error');
+    errorText.classList.add('error');
+}
+
+const setSuccess = (element) => {
+    const inputControl = element.parentElement;
+    const errorText = inputControl.querySelector('.error-text');
+
+    if (element.value !== '') {
+        element.setAttribute('class', 'input success');
+        errorText.classList.remove('error');
+    }
+}
+
+function createCard (book) {
     const card = document.createElement('div');
     const cardHeader = document.createElement('div');
     const cardBody = document.createElement('p');
@@ -93,10 +146,12 @@ function createCard(book) {
     if (book.read === true) {
         readBtn.innerText = 'Read';
         readBtn.classList.add('read');
+        saveBooks();
 
     } else {
         readBtn.innerText = 'Not Read';
         readBtn.classList.remove('read');
+        saveBooks();
     }
     readBtn.addEventListener('click', () => {
         book.read = !book.read;
