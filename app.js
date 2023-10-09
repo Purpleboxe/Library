@@ -66,29 +66,23 @@ function validateForm (e) {
 
     if (title.value.trim() === '') {
         setError(title);
-        allow = false;
     } else {
         setSuccess(title);
-        allow = true;
     }
 
     if (author.value.trim() === '') {
         setError(author);
-        allow = false;
     } else {
         setSuccess(author);
-        allow = true;
     }
 
     if (pages.value === '') {
         setError(pages);
-        allow = false;
     } else {
         setSuccess(pages);
-        allow = true;
     }
 
-    if (allow == true) {
+    if (title.value.trim() !== '' && author.value.trim() !== '' && pages.value !== '') {
         let newBook = new Book(title.value, author.value, pages.value, read);
 
         addBookToLibrary(newBook);
