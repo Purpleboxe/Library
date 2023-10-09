@@ -19,7 +19,7 @@ A library app for The Odin Project!
 ### What I learned
 
 This library app has taught me how to properly develop a good workflow.
-Building it from scratch seemed scary at first, but as I went deeper into building the project I had more confidence!
+Building it from scratch seemed scary at first but as I went deeper into building the project I got more confidence!
 
 ## Conclusion
 
